@@ -3,65 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's Time to Face It Kyle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>It's Time to Face It, Kyle</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
         body {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
             background-color: black;
             color: white;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
             margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            font-size: 64px;
-            margin-top: 50px;
-            font-weight: bold;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 30px auto;
             padding: 20px;
         }
-
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
         .image-container img {
-            max-width: 100%;
-            height: auto;
-            margin: 10px 0;
+            width: 90%;
+            max-width: 400px;
             border-radius: 10px;
+            margin-bottom: 10px;
         }
-
-        .video-container {
-            margin-top: 20px;
+        .caption {
+            font-size: 16px;
+            font-style: italic;
         }
-
-        .video-container iframe {
-            width: 100%;
-            max-width: 600px;
-            height: 350px;
-            border-radius: 10px;
+        .jokes {
+            text-align: left;
+            max-width: 500px;
+            margin: 30px auto;
+            font-size: 16px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <h1>It's Time to Face It Kyle</h1>
 
-    <div class="content">
-        <p>Welcome to the official wedding party fun page. Enjoy some memories, laughs, and surprises!</p>
+    <h1>It’s Time to Face It, Kyle…</h1>
 
-        <div class="image-container">
-            <!-- Replace with Google Photos image links -->
-            <img src="https://via.placeholder.com/600x400/FFFFFF/000000?text=Funny+Image+1" alt="Funny Image 1">
-            <img src="https://via.placeholder.com/600x400/FFFFFF/000000?text=Funny+Image+2" alt="Funny Image 2">
-        </div>
-
-        <div class="video-container">
-            <!-- Replace with Google Photos video embed link -->
-            <iframe src="https://photos.google.com/embed/video/YOUR_VIDEO_ID" allowfullscreen></iframe>
-        </div>
+    <div class="image-container">
+        <img src="images/IMG_0631.JPG" alt="Kyle in high school">
+        <img src="images/IMG_1050.JPG" alt="Kyle in high school">
+        <p class="caption">Here’s the nice guy at Pelham High School trying to get Charlotte’s attention.</p>
     </div>
+
+    <div class="jokes">
+        <p>🎣 **Living by the seat of your pants is over.** Charlotte has a **color-coded calendar** and you have **weekly sync meetings** about “household operations.”</p>
+
+        <p>💰 **Your fishing boat is no longer your biggest expense.** That title now belongs to **HomeGoods, wedding gifts, and an unexplained candle budget.**</p>
+
+        <p>⌛ **Last-minute plans?** Cute. **Now you RSVP within 24 hours—or she does it for you.**</p>
+
+        <p>👔 **Your wardrobe is no longer just your business.** You’ll leave the house **wearing what Charlotte approves** or **hearing about it all night.**</p>
+
+        <p>🔨 **House projects have deadlines now.** And **“I’ll get to it” has an expiration date.** (Hint: It’s much sooner than you think.)</p>
+
+        <p>🎒 **You are no longer in charge of your own packing.** Charlotte knows **exactly** what you forgot before you even do.</p>
+
+        <p>🐶 **You and Riley used to be a team.** Now he’s **more loyal to Charlotte**—especially when she’s handing out treats **and you’re getting “the look.”**</p>
+
+        <p>🚤 **Boats have rules, marriage has more.** And **none of them come with a manual.**</p>
+    </div>
+
 </body>
 </html>
