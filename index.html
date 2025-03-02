@@ -3,78 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's Time to Face It, Kyle</title>
+    <title>It's Time to Face It, Kyle...</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-
         body {
-            font-family: 'Playfair Display', serif;
-            text-align: center;
+            font-family: Arial, sans-serif;
             background-color: black;
             color: white;
+            text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            overflow: hidden;
         }
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .image-container {
+        .container {
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin: 20px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease-in-out;
         }
-        .image-container img {
-            width: 90%;
-            max-width: 400px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+        h1, p {
+            font-size: 2em;
+            margin: 20px;
         }
-        .caption {
-            font-size: 16px;
-            font-style: italic;
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
         }
-        .jokes {
-            text-align: left;
-            max-width: 500px;
-            margin: 30px auto;
-            font-size: 16px;
-            line-height: 1.5;
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        .nav-buttons span {
+            font-size: 2.5em;
+            cursor: pointer;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>It’s Time to Face It, Kyle…</h1>
+    <div class="container" id="page1">
+        <h1>It's Time to Face It, Kyle...</h1>
+        <p>Welcome to married life.</p>
+        <div class="nav-buttons">
+            <span onclick="nextPage(2)">➡️</span>
+        </div>
+    </div>
 
-    <div class="image-container">
+    <div class="container hidden" id="page2">
+        <p><strong>Throwback to the guy who never saw this coming... 👀</strong></p>
         <img src="images/IMG_0631.JPG" alt="Kyle in high school">
         <img src="images/IMG_1050.JPG" alt="Kyle in high school">
-        <p class="caption">Here’s the nice guy at Pelham High School trying to get Charlotte’s attention.</p>
+        <div class="nav-buttons">
+            <span onclick="prevPage(1)">⬅️</span>
+            <span onclick="nextPage(3)">➡️</span>
+        </div>
     </div>
 
-    <div class="jokes">
-        <p>🎣 **Living by the seat of your pants is over.** Charlotte has a **color-coded calendar** and you have **weekly sync meetings** about “household operations.”</p>
-
-        <p>💰 **Your fishing boat is no longer your biggest expense.** That title now belongs to **HomeGoods, wedding gifts, and an unexplained candle budget.**</p>
-
-        <p>⌛ **Last-minute plans?** Cute. **Now you RSVP within 24 hours—or she does it for you.**</p>
-
-        <p>👔 **Your wardrobe is no longer just your business.** You’ll leave the house **wearing what Charlotte approves** or **hearing about it all night.**</p>
-
-        <p>🔨 **House projects have deadlines now.** And **“I’ll get to it” has an expiration date.** (Hint: It’s much sooner than you think.)</p>
-
-        <p>🎒 **You are no longer in charge of your own packing.** Charlotte knows **exactly** what you forgot before you even do.</p>
-
-        <p>🐶 **You and Riley used to be a team.** Now he’s **more loyal to Charlotte**—especially when she’s handing out treats **and you’re getting “the look.”**</p>
-
-        <p>🚤 **Boats have rules, marriage has more.** And **none of them come with a manual.**</p>
+    <div class="container hidden" id="page3">
+        <p><strong>🕷️ Oh no… spiders! Time to face it, Kyle.</strong></p>
+        <img src="images/spider1.jpg" alt="Spider">
+        <img src="images/spider2.jpg" alt="Another Spider">
+        <div class="nav-buttons">
+            <span onclick="prevPage(2)">⬅️</span>
+            <span onclick="nextPage(4)">➡️</span>
+        </div>
     </div>
+
+    <div class="container hidden" id="page4">
+        <p><strong>🧙‍♂️ And just when you thought it couldn’t get worse…</strong></p>
+        <img src="images/dwarf1.jpg" alt="Dwarf">
+        <img src="images/dwarf2.jpg" alt="Another Dwarf">
+        <div class="nav-buttons">
+            <span onclick="prevPage(3)">⬅️</span>
+            <span onclick="nextPage(5)">➡️</span>
+        </div>
+    </div>
+
+    <div class="container hidden" id="page5">
+        <p><strong>💳 But wait… there’s something even scarier.</strong></p>
+        <img src="images/homegoods_receipt.jpg" alt="HomeGoods Receipt">
+        <p><strong>Welcome to married life, Kyle. No refunds. No escape.</strong> 💍😂</p>
+        <div class="nav-buttons">
+            <span onclick="prevPage(4)">⬅️</span>
+            <span onclick="nextPage(1)">🏠</span>
+        </div>
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.container').forEach(page => page.classList.add('hidden'));
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+
+        function prevPage(pageNumber) {
+            document.querySelectorAll('.container').forEach(page => page.classList.add('hidden'));
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+    </script>
 
 </body>
 </html>
