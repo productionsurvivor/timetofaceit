@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's Time to Face It, Kyle...</title>
+    <title>It's Time to Face It, Kyle</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,112 +11,96 @@
             color: white;
             text-align: center;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
+            padding: 20px;
         }
         .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: transform 0.5s ease-in-out;
-        }
-        h1, p {
-            font-size: 2em;
-            margin: 20px;
+            max-width: 600px;
+            margin: auto;
         }
         img {
-            max-width: 80%;
+            max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            margin: 20px 0;
         }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            width: 80%;
-            max-width: 300px;
+        .button {
+            display: inline-block;
             margin-top: 20px;
-        }
-        .nav-buttons span {
-            font-size: 2.5em;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: black;
+            background-color: white;
+            border: none;
             cursor: pointer;
-            animation: bounce 1s infinite;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .button:hover {
+            transform: scale(1.1);
         }
-        .hidden {
-            display: none;
+        iframe {
+            width: 100%;
+            height: 315px;
+            margin-top: 20px;
+            border: none;
         }
     </style>
 </head>
 <body>
-
-    <div class="container" id="page1">
-        <h1>It's Time to Face It, Kyle...</h1>
-        <p>Welcome to married life.</p>
-        <div class="nav-buttons">
-            <span onclick="nextPage(2)">➡️</span>
-        </div>
-    </div>
-
-    <div class="container hidden" id="page2">
-        <p><strong>Throwback to the guy who never saw this coming... 👀</strong></p>
-        <img src="images/IMG_0631.JPG" alt="Kyle in high school">
-        <img src="images/IMG_1050.JPG" alt="Kyle in high school">
-        <div class="nav-buttons">
-            <span onclick="prevPage(1)">⬅️</span>
-            <span onclick="nextPage(3)">➡️</span>
-        </div>
-    </div>
-
-    <div class="container hidden" id="page3">
-        <p><strong>🕷️ Oh no… spiders! Time to face it, Kyle.</strong></p>
-        <img src="images/spider1.jpg" alt="Spider">
-        <img src="images/spider2.jpg" alt="Another Spider">
-        <div class="nav-buttons">
-            <span onclick="prevPage(2)">⬅️</span>
-            <span onclick="nextPage(4)">➡️</span>
-        </div>
-    </div>
-
-    <div class="container hidden" id="page4">
-        <p><strong>🧙‍♂️ And just when you thought it couldn’t get worse…</strong></p>
-        <img src="images/dwarf1.jpg" alt="Dwarf">
-        <img src="images/dwarf2.jpg" alt="Another Dwarf">
-        <div class="nav-buttons">
-            <span onclick="prevPage(3)">⬅️</span>
-            <span onclick="nextPage(5)">➡️</span>
-        </div>
-    </div>
-
-    <div class="container hidden" id="page5">
-        <p><strong>💳 But wait… there’s something even scarier.</strong></p>
-        <img src="images/homegoods_receipt.jpg" alt="HomeGoods Receipt">
-        <p><strong>Welcome to married life, Kyle. No refunds. No escape.</strong> 💍😂</p>
-        <div class="nav-buttons">
-            <span onclick="prevPage(4)">⬅️</span>
-            <span onclick="nextPage(1)">🏠</span>
-        </div>
+    <div class="container">
+        <h1 id="title">It's Time to Face It, Kyle...</h1>
+        <p id="caption">Click to see what's ahead...</p>
+        <img id="image" src="" alt="">
+        <iframe id="video" style="display: none;"></iframe>
+        <br>
+        <button id="prevBtn" class="button" style="display: none;" onclick="prevPage()">Back</button>
+        <button id="nextBtn" class="button" onclick="nextPage()">Next</button>
+        <button id="homeBtn" class="button" style="display: none;" onclick="goHome()">Home</button>
     </div>
 
     <script>
-        function nextPage(pageNumber) {
-            document.querySelectorAll('.container').forEach(page => page.classList.add('hidden'));
-            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        let page = 0;
+        const pages = [
+            { title: "It's Time to Face It, Kyle...", caption: "Click to see what's ahead...", image: "" },
+            { title: "It's Time to Face It... The Past", caption: "Throwback to the guy who never saw this coming...", image: "images/IMG_0631.JPG" },
+            { title: "It's Time to Face It... Spiders", caption: "Kyle's worst nightmare...", image: "spider.png" },
+            { title: "It's Time to Face It... Dwarfs", caption: "He never stood a chance...", image: "dwarfs.png" },
+            { title: "It's Time to Face It... The HomeGoods Receipt", caption: "Budget? What budget?", image: "" },
+            { title: "Congratulations Kyle!", caption: "For landing the best catch of your life, Charlotte Palmer.\n\nIt's been a perfect day, here's wishing you both a perfect life together.", image: "", video: "https://drive.google.com/file/d/1L_qga24suO8qIgCGMDl75pL2lsOTcta8/preview" }
+        ];
+
+        function updatePage() {
+            document.getElementById("title").innerText = pages[page].title;
+            document.getElementById("caption").innerText = pages[page].caption;
+            document.getElementById("image").src = pages[page].image;
+            document.getElementById("video").style.display = pages[page].video ? "block" : "none";
+            document.getElementById("video").src = pages[page].video || "";
+            
+            document.getElementById("prevBtn").style.display = page > 0 ? "inline-block" : "none";
+            document.getElementById("nextBtn").style.display = page < pages.length - 1 ? "inline-block" : "none";
+            document.getElementById("homeBtn").style.display = page === pages.length - 1 ? "inline-block" : "none";
         }
 
-        function prevPage(pageNumber) {
-            document.querySelectorAll('.container').forEach(page => page.classList.add('hidden'));
-            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        function nextPage() {
+            if (page < pages.length - 1) {
+                page++;
+                updatePage();
+            }
         }
+
+        function prevPage() {
+            if (page > 0) {
+                page--;
+                updatePage();
+            }
+        }
+
+        function goHome() {
+            page = 0;
+            updatePage();
+        }
+
+        updatePage();
     </script>
-
 </body>
 </html>
