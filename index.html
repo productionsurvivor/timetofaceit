@@ -11,96 +11,83 @@
             color: white;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
         .container {
-            max-width: 600px;
-            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
         }
         img {
-            max-width: 100%;
+            max-width: 80%;
             height: auto;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
         .button {
-            display: inline-block;
-            margin-top: 20px;
+            background-color: white;
+            color: black;
             padding: 10px 20px;
             font-size: 18px;
-            color: black;
-            background-color: white;
             border: none;
             cursor: pointer;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.2s ease-in-out;
+            margin-top: 20px;
+            transition: transform 0.2s ease;
         }
         .button:hover {
             transform: scale(1.1);
         }
-        iframe {
-            width: 100%;
-            height: 315px;
-            margin-top: 20px;
-            border: none;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 id="title">It's Time to Face It, Kyle...</h1>
-        <p id="caption">Click to see what's ahead...</p>
-        <img id="image" src="" alt="">
-        <iframe id="video" style="display: none;"></iframe>
-        <br>
-        <button id="prevBtn" class="button" style="display: none;" onclick="prevPage()">Back</button>
-        <button id="nextBtn" class="button" onclick="nextPage()">Next</button>
-        <button id="homeBtn" class="button" style="display: none;" onclick="goHome()">Home</button>
+    <div id="page1" class="container">
+        <h1>It's Time to Face It, Kyle</h1>
+        <button class="button" onclick="nextPage(1)">→</button>
+    </div>
+
+    <div id="page2" class="container hidden">
+        <h2>Throwback to the guy who never saw this coming...</h2>
+        <p>Here's the nice guy at Pelham High School trying to get Charlotte's attention.</p>
+        <img src="images/IMG_0631.JPG" alt="Kyle in high school">
+        <img src="images/IMG_1050.JPG" alt="Kyle in high school cool pose">
+        <button class="button" onclick="nextPage(2)">→</button>
+    </div>
+
+    <div id="page3" class="container hidden">
+        <h2>It's Time to Face It... Your Fear of Spiders</h2>
+        <img src="images/spider.png" alt="Scary Spider">
+        <button class="button" onclick="nextPage(3)">→</button>
+    </div>
+
+    <div id="page4" class="container hidden">
+        <h2>It's Time to Face It... Your Fear of Dwarfs</h2>
+        <img src="images/dwarfs.png" alt="Scary Dwarfs">
+        <button class="button" onclick="nextPage(4)">→</button>
+    </div>
+
+    <div id="page5" class="container hidden">
+        <h2>It's Time to Face It... The HomeGoods Receipt</h2>
+        <p>Budget? What budget?</p>
+        <button class="button" onclick="nextPage(5)">→</button>
+    </div>
+
+    <div id="page6" class="container hidden">
+        <h2>Congratulations Kyle!</h2>
+        <p>For landing the best catch of your life, Charlotte Palmer.</p>
+        <p>It's been a perfect day, here's wishing you both a perfect life together.</p>
+        <iframe src="https://drive.google.com/file/d/1L_qga24suO8qIgCGMDl75pL2lsOTcta8/preview" width="80%" height="315" allowfullscreen></iframe>
     </div>
 
     <script>
-        let page = 0;
-        const pages = [
-            { title: "It's Time to Face It, Kyle...", caption: "Click to see what's ahead...", image: "" },
-            { title: "It's Time to Face It... The Past", caption: "Throwback to the guy who never saw this coming...", image: "images/IMG_0631.JPG" },
-            { title: "It's Time to Face It... Spiders", caption: "Kyle's worst nightmare...", image: "spider.png" },
-            { title: "It's Time to Face It... Dwarfs", caption: "He never stood a chance...", image: "dwarfs.png" },
-            { title: "It's Time to Face It... The HomeGoods Receipt", caption: "Budget? What budget?", image: "" },
-            { title: "Congratulations Kyle!", caption: "For landing the best catch of your life, Charlotte Palmer.\n\nIt's been a perfect day, here's wishing you both a perfect life together.", image: "", video: "https://drive.google.com/file/d/1L_qga24suO8qIgCGMDl75pL2lsOTcta8/preview" }
-        ];
-
-        function updatePage() {
-            document.getElementById("title").innerText = pages[page].title;
-            document.getElementById("caption").innerText = pages[page].caption;
-            document.getElementById("image").src = pages[page].image;
-            document.getElementById("video").style.display = pages[page].video ? "block" : "none";
-            document.getElementById("video").src = pages[page].video || "";
-            
-            document.getElementById("prevBtn").style.display = page > 0 ? "inline-block" : "none";
-            document.getElementById("nextBtn").style.display = page < pages.length - 1 ? "inline-block" : "none";
-            document.getElementById("homeBtn").style.display = page === pages.length - 1 ? "inline-block" : "none";
+        function nextPage(currentPage) {
+            document.getElementById("page" + currentPage).classList.add("hidden");
+            document.getElementById("page" + (currentPage + 1)).classList.remove("hidden");
         }
-
-        function nextPage() {
-            if (page < pages.length - 1) {
-                page++;
-                updatePage();
-            }
-        }
-
-        function prevPage() {
-            if (page > 0) {
-                page--;
-                updatePage();
-            }
-        }
-
-        function goHome() {
-            page = 0;
-            updatePage();
-        }
-
-        updatePage();
     </script>
 </body>
 </html>
