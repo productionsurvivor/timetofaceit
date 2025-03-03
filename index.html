@@ -6,88 +6,135 @@
     <title>It's Time to Face It, Kyle</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: black;
             color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             padding: 20px;
         }
-        .hidden {
-            display: none;
+        .container {
+            max-width: 500px;
+            margin: auto;
         }
         img {
-            max-width: 80%;
+            width: 100%;
             height: auto;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
         }
-        .button {
+        .btn {
+            display: inline-block;
             background-color: white;
             color: black;
             padding: 10px 20px;
+            text-decoration: none;
             font-size: 18px;
-            border: none;
-            cursor: pointer;
             margin-top: 20px;
-            transition: transform 0.2s ease;
+            border-radius: 5px;
         }
-        .button:hover {
-            transform: scale(1.1);
+        .btn:hover {
+            background-color: gray;
         }
     </style>
 </head>
 <body>
-    <div id="page1" class="container">
+    <div class="container">
         <h1>It's Time to Face It, Kyle</h1>
-        <button class="button" onclick="nextPage(1)">→</button>
+        <a href="page2.html" class="btn">Next →</a>
     </div>
+</body>
+</html>
 
-    <div id="page2" class="container hidden">
-        <h2>Throwback to the guy who never saw this coming...</h2>
-        <p>Here's the nice guy at Pelham High School trying to get Charlotte's attention.</p>
+<!-- Page 2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throwback</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Throwback to the guy who thought he had it all figured out...</h1>
         <img src="images/IMG_0631.JPG" alt="Kyle in high school">
-        <img src="images/IMG_1050.JPG" alt="Kyle in high school cool pose">
-        <button class="button" onclick="nextPage(2)">→</button>
+        <img src="images/IMG_1050.JPG" alt="Kyle being cool">
+        <a href="index.html" class="btn">← Back</a>
+        <a href="page3.html" class="btn">Next →</a>
     </div>
+</body>
+</html>
 
-    <div id="page3" class="container hidden">
-        <h2>It's Time to Face It... Your Fear of Spiders</h2>
-        <img src="images/spider.png" alt="Scary Spider">
-        <button class="button" onclick="nextPage(3)">→</button>
+<!-- Page 3: Spiders -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiders</title>
+</head>
+<body>
+    <div class="container">
+        <h1>It's Time to Face It... Your Fear of Spiders</h1>
+        <img src="images/spider.png" alt="Terrifying spider">
+        <a href="page2.html" class="btn">← Back</a>
+        <a href="page4.html" class="btn">Next →</a>
     </div>
+</body>
+</html>
 
-    <div id="page4" class="container hidden">
-        <h2>It's Time to Face It... Your Fear of Dwarfs</h2>
-        <img src="images/dwarfs.png" alt="Scary Dwarfs">
-        <button class="button" onclick="nextPage(4)">→</button>
+<!-- Page 4: Dwarfs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwarfs</title>
+</head>
+<body>
+    <div class="container">
+        <h1>It's Time to Face It... Your Fear of Dwarfs</h1>
+        <img src="images/dwarfs.png" alt="Creepy dwarfs">
+        <a href="page3.html" class="btn">← Back</a>
+        <a href="page5.html" class="btn">Next →</a>
     </div>
+</body>
+</html>
 
-    <div id="page5" class="container hidden">
-        <h2>It's Time to Face It... The HomeGoods Receipt</h2>
+<!-- Page 5: HomeGoods Receipt -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeGoods</title>
+</head>
+<body>
+    <div class="container">
+        <h1>It's Time to Face It... The HomeGoods Receipt</h1>
         <p>Budget? What budget?</p>
-        <button class="button" onclick="nextPage(5)">→</button>
+        <a href="page4.html" class="btn">← Back</a>
+        <a href="page6.html" class="btn">Next →</a>
     </div>
+</body>
+</html>
 
-    <div id="page6" class="container hidden">
-        <h2>Congratulations Kyle!</h2>
+<!-- Page 6: Congratulations -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Congratulations Kyle!</h1>
         <p>For landing the best catch of your life, Charlotte Palmer.</p>
         <p>It's been a perfect day, here's wishing you both a perfect life together.</p>
-        <iframe src="https://drive.google.com/file/d/1L_qga24suO8qIgCGMDl75pL2lsOTcta8/preview" width="80%" height="315" allowfullscreen></iframe>
+        <iframe src="https://drive.google.com/file/d/1L_qga24suO8qIgCGMDl75pL2lsOTcta8/preview" width="100%" height="315" allow="autoplay"></iframe>
+        <a href="page5.html" class="btn">← Back</a>
+        <a href="index.html" class="btn">🏠 Home</a>
     </div>
-
-    <script>
-        function nextPage(currentPage) {
-            document.getElementById("page" + currentPage).classList.add("hidden");
-            document.getElementById("page" + (currentPage + 1)).classList.remove("hidden");
-        }
-    </script>
 </body>
 </html>
