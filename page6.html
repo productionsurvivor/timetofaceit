@@ -32,20 +32,16 @@
 </div>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
-<div class="comments-section">
+<div class="comment-section">
     <h2>Leave a Message for Kyle & Charlotte</h2>
-    
-    <form id="commentForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <textarea id="message" placeholder="Write your message..." required></textarea>
-        <button type="submit">Post Message</button>
-    </form>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="message" placeholder="Write your message...">
+    <button onclick="postMessage()">Post Message</button>
 
-    <div id="commentsList">
-        <h3>Messages from Guests:</h3>
-        <ul id="messages"></ul>
-    </div>
+    <h3>Messages from Guests:</h3>
+    <div id="messages"></div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="comments.js"></script>
