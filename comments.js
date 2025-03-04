@@ -1,45 +1,48 @@
-// Supabase Configuration
+// Initialize Supabase
 const SUPABASE_URL = "https://tolxsmutqtbpzxscqufr.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbHhzbXV0cXRicHp4c2NxdWZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMDU1MjksImV4cCI6MjA1NjU4MTUyOX0.NGivuTx7iP3Rhw5EgEiBoJ514yvx9Fsf_RxqMLC-H98";
-const supabase = supabase.createClient(https://tolxsmutqtbpzxscqufr.supabase.co, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbHhzbXV0cXRicHp4c2NxdWZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMDU1MjksImV4cCI6MjA1NjU4MTUyOX0.NGivuTx7iP3Rhw5EgEiBoJ514yvx9Fsf_RxqMLC-H98);
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Function to submit comment
-document.getElementById("commentForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    
-    let name = document.getElementById("name").value.trim();
-    let message = document.getElementById("message").value.trim();
-    
-    if (!name || !message) return alert("Please fill in all fields.");
-
-    let { error } = await supabase.from("comments").insert([{ name, message }]);
-
-    if (error) {
-        alert("Error posting comment: " + error.message);
-    } else {
-        document.getElementById("commentForm").reset();
-        loadComments(); // Reload comments after posting
-    }
-});
-
-// Function to load comments
-async function loadComments() {
-    let { data, error } = await supabase.from("comments").select("*").order("created_at", { ascending: false });
-
-    if (error) {
-        console.error("Error fetching comments:", error.message);
+// Function to post a new message
+async function postMessage(name, message) {
+    if (!name || !message) {
+        alert("Please enter both a name and a message.");
         return;
     }
 
-    let messagesList = document.getElementById("messages");
-    messagesList.innerHTML = ""; // Clear existing messages
+    const { error } = await supabase
+        .from("comments")
+        .insert([{ name: name, message: message }]);
 
-    data.forEach((comment) => {
-        let listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${comment.name}:</strong> ${comment.message}`;
-        messagesList.appendChild(listItem);
+    if (error) {
+        console.error("Error posting message:", error);
+    } else {
+        console.log("Message posted successfully!");
+        loadMessages(); // Refresh messages
+    }
+}
+
+// Function to load messages from Supabase
+async function loadMessages() {
+    const { data, error } = await supabase
+        .from("comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("Error loading messages:", error);
+        return;
+    }
+
+    const messageContainer = document.getElementById("messages");
+    messageContainer.innerHTML = ""; // Clear previous messages
+
+    data.forEach((msg) => {
+        const messageElement = document.createElement("p");
+        messageElement.innerHTML = `<strong>${msg.name}:</strong> ${msg.message}`;
+        messageContainer.appendChild(messageElement);
     });
 }
 
-// Load comments on page load
-loadComments();
+// Load messages on page load
+document.addEventListener("DOMContentLoaded", loadMessages);
