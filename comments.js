@@ -1,19 +1,21 @@
-// Initialize Supabase Client
-const SUPABASE_URL = "https://tolxsmutqtbpzxscqufr.supabase.co"; // Replace with your actual Supabase URL
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbHhzbXV0cXRicHp4c2NxdWZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMDU1MjksImV4cCI6MjA1NjU4MTUyOX0.NGivuTx7iP3Rhw5EgEiBoJ514yvx9Fsf_RxqMLC-H98"; // Replace with your actual Supabase Anonymous Key
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Ensure script only runs after the page loads
+document.addEventListener("DOMContentLoaded", async function () {
+    // Initialize Supabase Client
+    const SUPABASE_URL = "https://tolxsmutqtbpzxscqufr.supabase.co"; // Replace with your actual Supabase URL
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvbHhzbXV0cXRicHp4c2NxdWZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMDU1MjksImV4cCI6MjA1NjU4MTUyOX0.NGivuTx7iP3Rhw5EgEiBoJ514yvx9Fsf_RxqMLC-H98"; // Replace with your actual Supabase Anonymous Key
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Ensure script runs after page loads
-document.addEventListener("DOMContentLoaded", function () {
+    console.log("Supabase Initialized");
+
     // Attach event listener to post button
-    document.getElementById("postButton").addEventListener("click", postMessage);
+    document.getElementById("postButton").addEventListener("click", () => postMessage(supabase));
 
     // Load messages on page load
-    loadMessages();
+    loadMessages(supabase);
 });
 
 // Function to post a new message
-async function postMessage() {
+async function postMessage(supabase) {
     const nameInput = document.getElementById("name");
     const messageInput = document.getElementById("message");
 
@@ -35,12 +37,12 @@ async function postMessage() {
         console.log("Message posted successfully!");
         nameInput.value = ""; // Clear input fields
         messageInput.value = "";
-        loadMessages(); // Refresh messages
+        loadMessages(supabase); // Refresh messages
     }
 }
 
 // Function to load messages from Supabase
-async function loadMessages() {
+async function loadMessages(supabase) {
     const { data, error } = await supabase
         .from("comments")
         .select("*")
