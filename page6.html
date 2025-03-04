@@ -29,23 +29,22 @@
             <h2>Leave a Message for Kyle & Charlotte</h2>
             <input type="text" id="name" placeholder="Your Name">
             <input type="text" id="message" placeholder="Write your message...">
-            <button onclick="postMessage(document.getElementById('name').value, document.getElementById('message').value)">
-                Post Message
-            </button>
+            <button id="postButton">Post Message</button>
 
             <h3>Messages from Guests:</h3>
             <div id="messages"></div>
-        </div>
+        </div> <!-- Closing tag for comment-section -->
 
         <!-- Navigation Buttons -->
         <div class="button-container">
             <a href="page5.html" class="button">Back</a>
             <a href="index.html" class="button">Home</a>
         </div>
-    </div>
+    </div> <!-- Closing tag for container -->
 
-    <!-- Load Supabase and Comments -->
+    <!-- Load Supabase and Comments Script -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="comments.js"></script>
+    <script src="comments.js"></script>
+
 </body>
 </html>
