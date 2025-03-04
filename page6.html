@@ -32,6 +32,23 @@
 </div>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
+<div class="comments-section">
+    <h2>Leave a Message for Kyle & Charlotte</h2>
+    
+    <form id="commentForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <textarea id="message" placeholder="Write your message..." required></textarea>
+        <button type="submit">Post Message</button>
+    </form>
+
+    <div id="commentsList">
+        <h3>Messages from Guests:</h3>
+        <ul id="messages"></ul>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="comments.js"></script>
 
 
 
