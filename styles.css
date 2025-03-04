@@ -43,3 +43,44 @@ img {
     font-size: 1.5em;
     font-weight: bold;
 }
+/* Center the comment section */
+.comment-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the input fields */
+.comment-section input[type="text"] {
+    width: 40%;
+    padding: 8px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Style the button */
+.comment-section button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.comment-section button:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* Message display */
+#messages {
+    margin-top: 20px;
+    max-width: 600px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
