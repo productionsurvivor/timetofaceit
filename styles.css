@@ -84,3 +84,9 @@ img {
     border-radius: 10px;
     display: inline-block;
 }
+.highlight-text {
+    font-size: 1.8em; /* Adjust the size as needed */
+    font-weight: bold;
+    text-align: center; /* Optional for centering */
+}
+
